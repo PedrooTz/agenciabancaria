@@ -1,14 +1,63 @@
 package br.senai.sp.jandira.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
 
-    public String nome;
+    private String nome;
 
-    public long cpf, rg, telefone;
+    private long cpf, rg, telefone;
 
     Scanner scanner = new Scanner(System.in);
+
+    List<Cliente> listCliente = new ArrayList<>();
+
+    public Cliente pesqusisarCliente(long cpf){
+        for (Cliente cliente: listCliente){
+            long cpfPesquisado = cliente.getCpf();
+
+            if (cpfPesquisado == cpf){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public void listarClientes(){
+        for (Cliente cliente: listCliente) {
+            System.out.println(cliente.getNome());
+        }
+    }
+
+    public void adicionarCliente(Cliente cliente){
+        listCliente.add(cliente);
+    }
+
+    public void setNome (String nome){
+        this.nome = nome;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public void setCpf (long cpf){
+        this.cpf = cpf;
+    }
+
+    public long getCpf() {
+        return cpf;
+    }
+
+    public void setTelefone(long telefone) {
+        this.telefone = telefone;
+    }
+
+    public long getTelefone() {
+        return telefone;
+    }
 
     public void cadastrarCliente(){
 
